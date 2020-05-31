@@ -15,7 +15,7 @@ go to Kafka directory: cd kafka_2.13-2.4.0
 
 Zookeeper start: bin/zookeeper-server-start.sh config/zookeeper.properties
 
-Kafka brokers start (config property files in path “kafka/“): 
+Kafka brokers start (server properties files in path “kafka/“): 
 
 bin/kafka-server-start.sh config/server.properties
 
