@@ -14,10 +14,15 @@ Terminal version update : export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
 go to Kafka directory: cd kafka_2.13-2.4.0
 
 Zookeeper start: bin/zookeeper-server-start.sh config/zookeeper.properties
-Kafka brokers start (config property files in path “kafka/“): 
+
+Kafka brokers start (server properties files in path “kafka/“): 
+
 bin/kafka-server-start.sh config/server.properties
+
 bin/kafka-server-start.sh config/server-1.properties
+
 bin/kafka-server-start.sh config/server-2.properties
+
 
 Create topic:  ./bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 3 --partitions 10 --topic demo
 
