@@ -1,5 +1,7 @@
 package uci.middleware.project.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -8,7 +10,6 @@ import static uci.middleware.project.utils.Constants.*;
 public class Room {
 
     private String videoUrl;
-    private Integer videoLeastQuality;
     private String videoStatus;
     private Float videoPosition;
 
@@ -16,9 +17,8 @@ public class Room {
 
     }
 
-    public Room(String videoUrl, Integer videoLeastQuality, String videoStatus, Float videoPosition) {
+    public Room(String videoUrl, String videoStatus, Float videoPosition) {
         this.videoUrl = videoUrl;
-        this.videoLeastQuality = videoLeastQuality;
         this.videoStatus = videoStatus;
         this.videoPosition = videoPosition;
     }
@@ -27,8 +27,6 @@ public class Room {
 
         Room room = new Room();
         room.setVideoUrl(map.get(VIDEO_URL));
-        if (map.get(VIDEO_LEAST_QUALITY) != null)
-            room.setVideoLeastQuality(Integer.parseInt(map.get(VIDEO_LEAST_QUALITY)));
         room.setVideoStatus(map.get(VIDEO_STATUS));
         if (map.get(VIDEO_POSITION) != null)
             room.setVideoPosition(Float.parseFloat(map.get(VIDEO_POSITION)));
@@ -41,14 +39,6 @@ public class Room {
 
     public void setVideoUrl(String videoUrl) {
         this.videoUrl = videoUrl;
-    }
-
-    public Integer getVideoLeastQuality() {
-        return videoLeastQuality;
-    }
-
-    public void setVideoLeastQuality(Integer videoLeastQuality) {
-        this.videoLeastQuality = videoLeastQuality;
     }
 
     public String getVideoStatus() {
@@ -67,11 +57,11 @@ public class Room {
         this.videoPosition = videoPosition;
     }
 
+    @JsonIgnore
     public Map<String, String> getHashMap() {
 
         Map<String, String> roomRecord = new HashMap<>();
         roomRecord.put(VIDEO_URL, videoUrl == null ? "" : videoUrl);
-        if (videoLeastQuality != null) roomRecord.put(VIDEO_LEAST_QUALITY, String.valueOf(videoLeastQuality));
         if (videoStatus != null) roomRecord.put(VIDEO_STATUS, videoStatus);
         if (videoPosition != null) roomRecord.put(VIDEO_POSITION, String.valueOf(videoPosition));
         return roomRecord;
@@ -81,7 +71,6 @@ public class Room {
     public String toString() {
         return "Room{" +
                 "videoUrl='" + videoUrl + '\'' +
-                ", videoLeastQuality=" + videoLeastQuality +
                 ", videoStatus='" + videoStatus + '\'' +
                 ", videoPosition=" + videoPosition +
                 '}';
