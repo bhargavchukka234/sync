@@ -3,6 +3,14 @@ Redis download: https://redis.io/download
 
 Cluster setup: go to “Creating and using a Redis Cluster” in https://redis.io/topics/cluster-tutorial
 
+# Simple steps to create one node redis cluster
+Install redis(apt-get or brew). Go to directory to create cluster files
+
+mkdir -p redis/30001;
+cd redis/30001;
+echo $'port 30001\n cluster-enabled yes\ncluster-config-file nodes.conf\ncluster-node-timeout 5000\nappendonly yes\n' > redis.conf;
+/usr/local/bin/redis-server redis.conf;
+
 
 Java jdk version check: /usr/libexec/java_home -V
 
