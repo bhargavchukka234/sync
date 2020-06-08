@@ -7,15 +7,16 @@ Cluster setup: go to “Creating and using a Redis Cluster” in https://redis.i
 
 Install redis(apt-get or brew). Go to directory to create cluster files
 
-mkdir -p redis/30001;
+mkdir -p redis/7001;
 
-cd redis/30001;
+cd redis/7001;
 
-echo $'port 30001\n cluster-enabled yes\ncluster-config-file nodes.conf\ncluster-node-timeout 5000\nappendonly yes\n' > redis.conf;
+echo $'port 7001\n cluster-enabled yes\ncluster-config-file nodes.conf\ncluster-node-timeout 5000\nappendonly yes\n' > redis.conf;
 
 /usr/local/bin/redis-server redis.conf;
 
 
+# Steps for kafka
 
 Java jdk version check: /usr/libexec/java_home -V
 
