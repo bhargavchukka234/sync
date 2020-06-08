@@ -12,6 +12,8 @@ public class Room {
     private String videoUrl;
     private String videoStatus;
     private Float videoPosition;
+    private Long videoStatusUpdateTimestamp;
+    private Long videoPositionUpdateTimestamp;
 
     public Room() {
 
@@ -30,6 +32,12 @@ public class Room {
         room.setVideoStatus(map.get(VIDEO_STATUS));
         if (map.get(VIDEO_POSITION) != null)
             room.setVideoPosition(Float.parseFloat(map.get(VIDEO_POSITION)));
+        if (map.get(VIDEO_POSITION_UPDATE_TIME) != null) {
+            room.setVideoPositionUpdateTimestamp(Long.parseLong(map.get(VIDEO_POSITION_UPDATE_TIME)));
+        }
+        if (map.get(VIDEO_STATUS_UPDATE_TIME) != null) {
+            room.setVideoStatusUpdateTimestamp(Long.parseLong(map.get(VIDEO_STATUS_UPDATE_TIME)));
+        }
         return room;
     }
 
@@ -57,6 +65,22 @@ public class Room {
         this.videoPosition = videoPosition;
     }
 
+    public Long getVideoPositionUpdateTimestamp() {
+        return videoPositionUpdateTimestamp;
+    }
+
+    public void setVideoPositionUpdateTimestamp(Long videoPositionUpdateTimestamp) {
+        this.videoPositionUpdateTimestamp = videoPositionUpdateTimestamp;
+    }
+
+    public Long getVideoStatusUpdateTimestamp() {
+        return videoStatusUpdateTimestamp;
+    }
+
+    public void setVideoStatusUpdateTimestamp(Long videoStatusUpdateTimestamp) {
+        this.videoStatusUpdateTimestamp = videoStatusUpdateTimestamp;
+    }
+
     @JsonIgnore
     public Map<String, String> getHashMap() {
 
@@ -64,6 +88,10 @@ public class Room {
         roomRecord.put(VIDEO_URL, videoUrl == null ? "" : videoUrl);
         if (videoStatus != null) roomRecord.put(VIDEO_STATUS, videoStatus);
         if (videoPosition != null) roomRecord.put(VIDEO_POSITION, String.valueOf(videoPosition));
+        if (videoPositionUpdateTimestamp != null)
+            roomRecord.put(VIDEO_POSITION_UPDATE_TIME, String.valueOf(videoPositionUpdateTimestamp));
+        if (videoStatusUpdateTimestamp != null)
+            roomRecord.put(VIDEO_STATUS_UPDATE_TIME, String.valueOf(videoStatusUpdateTimestamp));
         return roomRecord;
     }
 
@@ -73,6 +101,8 @@ public class Room {
                 "videoUrl='" + videoUrl + '\'' +
                 ", videoStatus='" + videoStatus + '\'' +
                 ", videoPosition=" + videoPosition +
+                ", videoStatusUpdateTimestamp=" + videoStatusUpdateTimestamp +
+                ", videoPositionUpdateTimestamp=" + videoPositionUpdateTimestamp +
                 '}';
     }
 }

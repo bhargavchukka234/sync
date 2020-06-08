@@ -31,23 +31,23 @@ public class App {
     }
 
     private static void redisTest() {
-        Redis redis = new Redis("localhost", 7000);
+        Redis redis = new Redis("localhost", 7001);
         ClientDAO clientDAO = new ClientDAO(redis.getJedisCluster());
         RoomDAO roomDAO = new RoomDAO(redis.getJedisCluster());
-        roomDAO.createRoom("cultAriana", new Room());
-        roomDAO.addClientToRoom("cultAriana", "bhargav");
-
-        roomDAO.updateRoom("cultAriana", new Room("https://www.youtube.com/watch?v=AoAm4om0wTs", "play", 0f));
-
-        roomDAO.addClientToRoom("cultAriana", "apoorva");
-        roomDAO.getRoomInformation("cultAriana");
-        clientDAO.updateRoomClient("cultAriana", "bhargav", new RoomClient(10f, System.currentTimeMillis()));
-        roomDAO.addClientToRoom("cultAriana", "tanvi");
-        clientDAO.updateRoomClient("cultAriana", "apoorva", new RoomClient(11f, System.currentTimeMillis()));
-        clientDAO.updateRoomClient("cultAriana", "tanvi", CONSECUTIVE_SLOW_CLIENT_COUNT, "1");
-
-        System.out.println("client status in a room : " + clientDAO.getAllClientStatusInRoom("cultAriana"));
-        System.out.println("room information of a room : " + roomDAO.getRoomInformation("cultAriana"));
-        redis.deleteAllKeys("{cultAriana}*");
+//        roomDAO.createRoom("cultAriana", new Room());
+//        roomDAO.addClientToRoom("cultAriana", "bhargav");
+//
+//        roomDAO.updateRoom("cultAriana", new Room("https://www.youtube.com/watch?v=AoAm4om0wTs", "play", 0f));
+//
+//        roomDAO.addClientToRoom("cultAriana", "apoorva");
+//        roomDAO.getRoomInformation("cultAriana");
+//        clientDAO.updateRoomClient("cultAriana", "bhargav", new RoomClient(10f, System.currentTimeMillis()));
+//        roomDAO.addClientToRoom("cultAriana", "tanvi");
+//        clientDAO.updateRoomClient("cultAriana", "apoorva", new RoomClient(11f, System.currentTimeMillis()));
+//        clientDAO.updateRoomClient("cultAriana", "tanvi", CONSECUTIVE_SLOW_CLIENT_COUNT, "1");
+//
+//        System.out.println("client status in a room : " + clientDAO.getAllClientStatusInRoom("cultAriana"));
+//        System.out.println("room information of a room : " + roomDAO.getRoomInformation("cultAriana"));
+        redis.deleteAllKeys("{test}*");
     }
 }

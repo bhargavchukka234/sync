@@ -38,6 +38,14 @@ public class RoomDAO {
         jedisCluster.hset(Redis.getHashTagKey(roomName), field, value);
     }
 
+    public void updateRoomVideoStatus(String roomName, String value) {
+
+        Room room = new Room();
+        room.setVideoStatus(value);
+        room.setVideoStatusUpdateTimestamp(System.currentTimeMillis());
+        jedisCluster.hset(Redis.getHashTagKey(roomName), room.getHashMap());
+    }
+
     public void addClientToRoom(String roomName, String clientName) {
 
         if (jedisCluster.sismember(Redis.getHashTagKey(roomName) + MEMBERS_SUFFIX, clientName)) {

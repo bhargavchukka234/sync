@@ -7,6 +7,9 @@ public interface Constants {
     public static final String VIDEO_LEAST_QUALITY = "video:leastQuality";
     public static final String VIDEO_STATUS = "video:status";
     public static final String VIDEO_POSITION = "video:position";
+    public static final String VIDEO_POSITION_UPDATE_TIME = "video:positionUpdateTime";
+    public static final String VIDEO_STATUS_UPDATE_TIME = "video:statusUpdateTime";
+    public static final String SYNC_SERVER_ID = "syncServerId";
 
     //room client map keys
     public static final String STREAM_POSITION = "streamPosition";
