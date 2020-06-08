@@ -5,7 +5,7 @@ Cluster setup: go to “Creating and using a Redis Cluster” in https://redis.i
 
 # Simple steps to create one node redis cluster
 
-Install redis(apt-get or brew). Go to directory to create cluster files
+Install redis(apt-get or brew). Go to directory of choice to create cluster files
 
 mkdir -p redis/7001;
 
