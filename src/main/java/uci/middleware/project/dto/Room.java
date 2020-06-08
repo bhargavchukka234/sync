@@ -9,7 +9,7 @@ import static uci.middleware.project.utils.Constants.*;
 
 public class Room {
 
-    private String videoUrl;
+    private String videoID;
     private String videoStatus;
     private Float videoPosition;
     private Long videoStatusUpdateTimestamp;
@@ -19,8 +19,8 @@ public class Room {
 
     }
 
-    public Room(String videoUrl, String videoStatus, Float videoPosition) {
-        this.videoUrl = videoUrl;
+    public Room(String videoID, String videoStatus, Float videoPosition) {
+        this.videoID = videoID;
         this.videoStatus = videoStatus;
         this.videoPosition = videoPosition;
     }
@@ -28,7 +28,7 @@ public class Room {
     public static Room roomFactory(Map<String, String> map) {
 
         Room room = new Room();
-        room.setVideoUrl(map.get(VIDEO_URL));
+        room.setvideoID(map.get(VIDEO_URL));
         room.setVideoStatus(map.get(VIDEO_STATUS));
         if (map.get(VIDEO_POSITION) != null)
             room.setVideoPosition(Float.parseFloat(map.get(VIDEO_POSITION)));
@@ -41,12 +41,12 @@ public class Room {
         return room;
     }
 
-    public String getVideoUrl() {
-        return videoUrl;
+    public String getvideoID() {
+        return videoID;
     }
 
-    public void setVideoUrl(String videoUrl) {
-        this.videoUrl = videoUrl;
+    public void setvideoID(String videoID) {
+        this.videoID = videoID;
     }
 
     public String getVideoStatus() {
@@ -85,7 +85,7 @@ public class Room {
     public Map<String, String> getHashMap() {
 
         Map<String, String> roomRecord = new HashMap<>();
-        roomRecord.put(VIDEO_URL, videoUrl == null ? "" : videoUrl);
+        roomRecord.put(VIDEO_URL, videoID == null ? "" : videoID);
         if (videoStatus != null) roomRecord.put(VIDEO_STATUS, videoStatus);
         if (videoPosition != null) roomRecord.put(VIDEO_POSITION, String.valueOf(videoPosition));
         if (videoPositionUpdateTimestamp != null)
@@ -98,7 +98,7 @@ public class Room {
     @Override
     public String toString() {
         return "Room{" +
-                "videoUrl='" + videoUrl + '\'' +
+                "videoID='" + videoID + '\'' +
                 ", videoStatus='" + videoStatus + '\'' +
                 ", videoPosition=" + videoPosition +
                 ", videoStatusUpdateTimestamp=" + videoStatusUpdateTimestamp +
