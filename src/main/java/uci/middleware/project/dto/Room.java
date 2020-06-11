@@ -85,7 +85,7 @@ public class Room {
     public Map<String, String> getHashMap() {
 
         Map<String, String> roomRecord = new HashMap<>();
-        roomRecord.put(VIDEO_URL, videoID == null ? "" : videoID);
+        if(videoID != null) roomRecord.put(VIDEO_URL, videoID);
         if (videoStatus != null) roomRecord.put(VIDEO_STATUS, videoStatus);
         if (videoPosition != null) roomRecord.put(VIDEO_POSITION, String.valueOf(videoPosition));
         if (videoPositionUpdateTimestamp != null)

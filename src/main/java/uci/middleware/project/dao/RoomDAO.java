@@ -46,6 +46,26 @@ public class RoomDAO {
         jedisCluster.hset(Redis.getHashTagKey(roomName), room.getHashMap());
     }
 
+    public void updateRoomVideoUrl(String roomName, String value) {
+
+//        Transaction transaction = jedis.multi();
+        Long curentTime = System.currentTimeMillis();
+        Room room = new Room();
+        room.setvideoID(value);
+        room.setVideoStatus("pause");
+        room.setVideoStatusUpdateTimestamp(curentTime);
+        room.setVideoPosition(0f);
+        room.setVideoPositionUpdateTimestamp(curentTime);
+        jedisCluster.hset(Redis.getHashTagKey(roomName), room.getHashMap());
+//        Set<String> clients = jedisCluster.smembers(Redis.getHashTagKey(roomName) + MEMBERS_SUFFIX);
+//        for(String clientName : clients){
+//
+//            transaction.hset(Redis.getHashTagKey(roomName) + COLON + clientName , STREAM_POSITION, String.valueOf(0));
+//            transaction.hset(Redis.getHashTagKey(roomName) + COLON + clientName , POSITION_SNAPSHOT_TIME, String.valueOf(curentTime));
+//        }
+//        transaction.exec();
+    }
+
     public void addClientToRoom(String roomName, String clientName) {
 
         if (jedisCluster.sismember(Redis.getHashTagKey(roomName) + MEMBERS_SUFFIX, clientName)) {

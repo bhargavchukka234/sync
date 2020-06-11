@@ -1,5 +1,6 @@
 package uci.middleware.project;
 
+import redis.clients.jedis.Jedis;
 import uci.middleware.project.dao.ClientDAO;
 import uci.middleware.project.dao.Redis;
 import uci.middleware.project.dao.RoomDAO;
@@ -21,7 +22,7 @@ public class App {
 //        System.out.println( "room1 value : " + cachedResponse);
 
         redisTest();
-        kafkaTest();
+        //kafkaTest();
     }
 
     private static void kafkaTest() {
